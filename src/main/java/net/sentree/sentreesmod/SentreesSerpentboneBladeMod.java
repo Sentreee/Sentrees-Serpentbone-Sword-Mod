@@ -1,7 +1,6 @@
 package net.sentree.sentreesmod;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -14,25 +13,22 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.sentree.sentreesmod.item.ModItems;
-import net.sentree.sentreesmod.loot.ModLootModifiers;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(SentreesFoodsMod.MOD_ID)
-public class SentreesFoodsMod
+@Mod(SentreesSerpentboneBladeMod.MOD_ID)
+public class SentreesSerpentboneBladeMod
 {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "sentreesmod";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public SentreesFoodsMod()
+    public SentreesSerpentboneBladeMod()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(modEventBus);
-
-        ModLootModifiers.register((modEventBus));
 
         modEventBus.addListener(this::commonSetup);
 
@@ -45,8 +41,8 @@ public class SentreesFoodsMod
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if(event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
-            event.accept(ModItems.BLOOD_VIAL);
+        if(event.getTabKey() == CreativeModeTabs.COMBAT) {
+            event.accept(ModItems.SERPENTBONE_BLADE);
         }
     }
 
